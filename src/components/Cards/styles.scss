@@ -1,3 +1,31 @@
+$orange: #FFBD52;
+$blue: #54B9D3;
+
+.message {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 24px;
+    color: black;
+}
+
+.reset {
+    display: flex; 
+    margin: 10px auto;
+    border: 0.3rem solid white;
+    border-radius:0.5rem;
+    background: #54B9D3;
+    font-size: 16px;
+    color: white;
+    font-family: Assistant;
+    padding: 0.3rem;
+    cursor: pointer;
+    z-index: 1;
+    transition: all 0.05s ease-in-out;
+    &:hover, &:focus {
+      opacity: 0.8;
+    }
+}
+
 .cards {
     display: flex;
     flex-wrap: wrap;
@@ -22,32 +50,20 @@
     transform-style: preserve-3d;
     transition: transform .5s;
     background-repeat: no-repeat;
-    transform: rotateY(180deg);
-    &:active {
-        transform: scale(.97);
-        transition: transform .2s;
-    }
+    cursor: pointer;
 }
 
 .unrevealed {
+    transform: rotateY(0deg);
     background-image: url("/images/chickAndHen.svg") !important;
 }
 
-
-
-.front, .back{
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    backface-visibility: hidden;
+.revealed, .matched {
+    transform: rotateY(180deg);
 }
 
-.front {
-    transform: rotateY(180deg);
-    left: 0;
-    z-index: 10;
+.matched {
+    background-color: rgba(84, 185, 211, 0.3);
 }
 
 @media only screen and (min-width: 500px) {
@@ -75,5 +91,8 @@
         width: calc(16.666% - 20px);
         height: calc(20% - 20px);
         margin: 10px;
+    }
+    .reset {
+        padding: 0.5rem;
     }
 }
