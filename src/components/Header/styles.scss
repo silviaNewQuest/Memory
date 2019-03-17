@@ -1,0 +1,27 @@
+$orange: #FFBD52;
+$blue: #54B9D3;
+
+.header {
+    background: #F8F8F8;
+}
+
+.header__bar {
+    height: 10px;
+    min-width: 100%;
+}
+
+.header__bar--first {
+    background: $orange;
+}
+
+.header__bar--second {
+    background: white;
+    box-shadow: 0px 2px 4px 0px #F8F8F8;
+}
+
+.header__text {
+    text-align: center;
+    color: $blue;
+    padding: 15px 0;
+    box-shadow: 0px 2px 4px 0px #D9D9D9;
+}

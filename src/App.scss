@@ -1,0 +1,13 @@
+$font-family-default: Assistant;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $font-family-default;
+  background: #F0F0F0;
+  height: 100vh;
+}

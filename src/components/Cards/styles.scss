@@ -1,0 +1,79 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: calc(100vh - 192px);
+    width: 100%;
+    margin: 50px auto;
+    padding: 0 20px;
+    max-width: 960px;
+    perspective: 1000px;
+}
+
+.card {
+    width: calc(33.333% - 10px);
+    height: calc(10% - 10px);
+    border: 6px solid white;
+    border-radius: 10px;
+    margin: 5px;
+    position: relative;
+    transform: scale(1);
+    background: rgba(255, 189, 82, 0.5);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+    background-repeat: no-repeat;
+    transform: rotateY(180deg);
+    &:active {
+        transform: scale(.97);
+        transition: transform .2s;
+    }
+}
+
+.unrevealed {
+    background-image: url("/images/chickAndHen.svg") !important;
+}
+
+
+
+.front, .back{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    backface-visibility: hidden;
+}
+
+.front {
+    transform: rotateY(180deg);
+    left: 0;
+    z-index: 10;
+}
+
+@media only screen and (min-width: 500px) {
+    .card {
+        width: calc(25% - 10px);
+        height: calc(12.5% - 10px);
+    }
+    .front, .back{ 
+        padding: 5px;
+    }
+}
+
+@media only screen and (min-width: 620px) {
+    .card {
+        width: calc(20% - 10px);
+        height: calc(16.666% - 10px);
+    }
+    .front, .back{ 
+        padding: 7px;
+    }
+}
+
+@media only screen and (min-width: 750px) {
+    .card {
+        width: calc(16.666% - 20px);
+        height: calc(20% - 20px);
+        margin: 10px;
+    }
+}
