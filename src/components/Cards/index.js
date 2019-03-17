@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useState, useEffect} from 'react';
 import classnames from 'classnames';
 import './styles.scss';
 import shuffleCards, {CARD_STATE} from './card.js';
@@ -12,6 +12,12 @@ const Card = ({state, url, onClick}) => (
 
 const Cards = () => {
     const [cards, setCards ] = useState(shuffleCards());
+
+    useEffect(() => {
+        preloadImages();
+    }, []);
+
+    const preloadImages = () => cards.map(card => new Image().src = card.url)
 
     const flippedCards = cards.filter(card => card.state === CARD_STATE.REVEALED);
 
