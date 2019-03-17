@@ -50,7 +50,7 @@ const Cards = () => {
                 if (flippedCards[0].name === name) {
                     setCards(matchedState);
                 } else {            
-                    setTimeout(setCards, 1000, unFlip);
+                    setTimeout(setCards, 600, unFlip);
                 }
             }        
         }
