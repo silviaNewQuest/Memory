@@ -21,9 +21,13 @@ const Cards = () => {
 
     const flippedCards = cards.filter(card => card.state === CARD_STATE.REVEALED);
 
+    
 
     const handleClick = (position, name, state) => () => {
         if(cards.filter(e => e.state === CARD_STATE.REVEALED).length >1) {
+            return;
+        }
+        if(state === CARD_STATE.MATCHED) {
             return;
         }
 
