@@ -6,6 +6,7 @@ $blue: #54B9D3;
     text-align: center;
     font-size: 24px;
     color: black;
+    font-family: Roboto;
 }
 
 .reset {
@@ -24,6 +25,26 @@ $blue: #54B9D3;
     &:hover, &:focus {
       opacity: 0.8;
     }
+}
+
+.time {
+    font-family: Roboto;
+    font-size: 40px;
+    margin-top: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    line-height: 0.6;
+    color: $orange;
+}
+
+.time--style {
+    padding: 0 30px 0 10px;
+    color: black;
+    font-size: 20px;
+    display: flex;
+    align-self: flex-end;
+    text-transform: uppercase;
 }
 
 .cards {

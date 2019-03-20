@@ -1,6 +1,8 @@
 
 
-const cardNames = ['bear', 'bird', 'cat', 'cow', 'deer', 'dog', 'duck', 'elephant', 'giraffe', 'lion', 'panda', 'pig', 'rabbit', 'racoon', 'squirrel'];
+// const cardNames = ['bear', 'bird', 'cat', 'cow', 'deer', 'dog', 'duck', 'elephant', 'giraffe', 'lion', 'panda', 'pig', 'rabbit', 'racoon', 'squirrel'];
+
+const cardNames = ['bear', 'bird']
 
 function shuffle(array) {
 

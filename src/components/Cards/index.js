@@ -9,21 +9,42 @@ const Card = ({state, url, onClick}) => (
     style={{backgroundImage:`url(${url})`}} onClick={onClick}></div>
 )
 
-
 const Cards = () => {
     const [cards, setCards ] = useState(shuffleCards());
+    const [timeSeconds, setTimeSeconds ] = useState(0);
+    const [timeMinutes, setTimeMinutes ] = useState(0);
+    const [running, setRunning] = useState(false);
 
     useEffect(() => {
         preloadImages();
     }, []);
 
+    useEffect(() => {
+        if(!running) {
+            return;
+        }
+
+        const interval = setInterval(() => {
+            setTimeSeconds(timeSeconds+1);
+            if (timeSeconds === 60) {
+                setTimeMinutes(timeMinutes + 1);
+                setTimeSeconds(0);
+            }   
+        }, 1000)
+            
+        return() => {
+            clearInterval(interval);
+        };
+    }, [running, timeSeconds])
+
     const preloadImages = () => cards.map(card => new Image().src = card.url)
 
     const flippedCards = cards.filter(card => card.state === CARD_STATE.REVEALED);
 
-    
-
     const handleClick = (position, name, state) => () => {
+
+        setRunning(true);
+
         if(cards.filter(e => e.state === CARD_STATE.REVEALED).length >1) {
             return;
         }
@@ -64,14 +85,36 @@ const Cards = () => {
 
     const unFlipAll = () => {
         setCards(shuffleCards())
+        setTimeSeconds(0)
+        setTimeMinutes(0)
+        setRunning(false)
+    };
+
+    const minutesDecider = () => {
+        if (timeMinutes < 1) {
+            return "Minute";
+        }
+        return "Minutes";
+    }
+
+    const secondsDecider = () => {
+        if (timeSeconds < 1) {
+            return "Second";
+        }
+        return "Seconds";
     }
 
     return (
         <>
-        {allMatched && <div className="congrats"><div className="message">Congratulations on matching all animals!</div>
-        <button className="reset" type="button" onClick={unFlipAll}>Play Again?</button></div>}
+        {allMatched && 
+        <div className="congrats">
+            <div className="message">Congratulations on matching all animals!</div>
+            <button className="reset" type="button" onClick={unFlipAll}>Play Again?</button>
+        </div>}
+        <div className="time">{timeMinutes} <div className="time--style">{minutesDecider()}</div> {timeSeconds} <div className="time--style">{secondsDecider()}</div></div>
         <div className="cards">
-        {cards.map(card => <Card key={card.position} onClick={handleClick(card.position, card.name, card.state)} 
+        {cards.map(card => <Card key={card.position} 
+            onClick={handleClick(card.position, card.name, card.state)}
             url={card.url} 
             state={card.state}
             />)}
