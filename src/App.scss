@@ -7,7 +7,7 @@ $font-family-default: Assistant;
 }
 
 body {
-  font-family: $font-family-default;
+  font-family: $font-family-default, sans-serif;
   background: #F0F0F0;
   height: 100vh;
 }
